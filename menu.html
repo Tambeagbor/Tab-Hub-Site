@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="tabhub-favicon.ico">
+    <style>
+        /* Your existing styles for video and content */
+
+        /* Add the new styles for the menu */
+        body { 
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+    }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+    }
+
+        .logo {
+            position: absolute;
+            top: 60px;
+            left: 50px;
+            display: block;
+            z-index: 11;
+            transition: all 250ms linear;
+            text-decoration: none;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Add your existing styles for .menu-icon, .nav, .section-center, and h1 */
+
+        /* Add media query styles for responsiveness */
+        @media screen and (max-width: 991px) {
+        .menu-icon:checked + label,
+        .menu-icon:not(:checked) + label {
+            right: 55px;
+    }
+
+        .logo {
+            left: 30px;
+        }
+
+        .clock {
+            left: 30px;
+        }
+
+
+            /* Apply 3D effect to Verdana font */
+        .verdana-3d {
+            transform-style: preserve-3d;
+            perspective: 200px;
+        }
+
+            .verdana-3d h1 {
+            font-family: Verdana, sans-serif;
+            transform: translateZ(10px);
+/* Add a glow effect */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.8);
+        }
+
+/* Glitch animation */
+            @keyframes glitch {
+
+
+            0%,
+            100% {
+                transform: translate(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translate(-5px, -5px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+        transform: translate(5px, 5px);
+            }
+    }
+
+            .glitch {
+                animation: glitch 0.1s infinite;
+    }
+
+            /* Add your existing media query styles */
+        }
+
+.clock {
+    position: absolute;
+    top: 10%;
+    left: 8.5%;
+    transform: translateX(-50%) translateY(-50%);
+    color: white;
+    font-size: 10px;
+    font-family: Quantico;
+    letter-spacing: 7px;
+    text-align: center; /* Center the clock text */
+    margin-top: 10px; /* Add some spacing between text and clock */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-behavior: smooth;
+    background: none;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+h1 a {
+    font-size: 80px;
+    color: #BF2E97;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
+}
+
+.popover {
+    display: none;
+    box-shadow: 0px 6px 8px rgba(19, 19, 19, .7);
+}
+
+.popover:target {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popover .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 0;
+    height: 0;
+    color: #fff;
+    background-color: #191919;
+    animation: 1s grow ease forwards;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.nav_list  {
+    list-style-type: none;
+}
+
+.nav_list a {
+    text-decoration: none;
+    font-size: 50px;
+    color: #fff;
+}
+
+.nav_list_item {
+    height: 100%;
+    overflow: hidden;
+}
+
+.nav_list li {
+    padding: 15px 0;
+    text-transform: uppercase;
+    transform: translateY(200px);
+    opacity: 0;
+    animation: 2s slideUp ease forwards .5s;
+    position: relative;
+}
+
+.nav_list li::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 0px;
+    left: 0;
+    bottom: 10px;
+    background: #BF2E97; 
+    transition: all .5s ease;
+}
+
+.nav_list li:hover:before {
+        width: 100%;
+}
+
+.popover p {
+    padding: 50px;
+    opacity: 0;
+    animation: 1s fadeIn ease forwards 1s;
+}
+
+.popover .close::after {
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    display: flex;
+    z-index: 1;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: #BF2E97;
+    color: #fff;
+    content: "×";
+    cursor: pointer;
+    opacity: 0; 
+    animation: 1s fadeIn ease forwards .5s;
+}
+
+@keyframes grow {
+    100% {
+    height: 90%;
+    width: 90%;
+    }
+}
+
+@keyframes fadeIn {
+100% {
+    opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    100% {
+    transform: translateY(0);
+    opacity: 1;
+    }
+}
+
+p {
+    color: white;
+    font-size: 10px;
+    font-family: Quantico;
+}
+
+
+/* Rest of your styles */
+
+    </style>
+</head>
+
+<body>
+    <video autoplay loop muted>
+        <source src="space-static.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <a href="home.html" class="logo" target="_blank">
+        <div class="content">
+            <h1 id="changingText" class="verdana-3d">TabHub</h1>
+    </a>
+
+    <div class="container">
+        <h1>
+            <a href="#menu">Menu</a>
+        </h1>
+
+        <div class="popover" id="menu">
+            <div class="content">
+                <a href="#" class="close"></a>
+                <div class="nav">
+                    <ul class="nav_list">
+                        <div class="nav_list_item">
+                            <li><a href="about.html">About</a></li>
+                        </div>
+                        <div class="nav_list_item">
+                            <li><a href="contact.html">Contact</a></li>
+                        </div>
+                        <div class="nav_list_item">
+                            <li><a href="projects.html">Projects</a></li>
+                        </div>
+                        <div class="nav_list_item">
+                            <li><a href="services.html">Services</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+
+    <script>
+        const fonts = [
+            "Arial, sans-serif",
+            "Times New Roman, serif",
+            "Verdana, sans-serif",
+            "Courier New, monospace",
+            "Georgia, serif",
+            "Impact, sans-serif",
+            "Tahoma, sans-serif",
+            "Lucida Console, monospace",
+            "Palatino Linotype, serif",
+            "Trebuchet MS, sans-serif",
+            "Bookman, serif",
+            "Franklin Gothic Medium, sans-serif",
+            "Century Gothic, sans-serif",
+            "Copperplate, fantasy",
+            "Brush Script MT, cursive",
+            "Garamond, serif",
+            "Comic Sans MS, cursive",
+            "Arial Black, sans-serif",
+            "Verdana, sans-serif",
+            "Courier, monospace",
+            "Helvetica, sans-serif",
+            "Impact, fantasy",
+            "Book Antiqua, serif",
+            "Monaco, monospace"
+          // Add more fonts as needed
+        ];
+
+        
+    
+        const changingText = document.getElementById("changingText");
+        let currentIndex = 0;
+    
+        function changeFont() {
+            changingText.style.fontFamily = fonts[currentIndex];
+            currentIndex = (currentIndex + 1) % fonts.length;
+        }
+    
+        function toggleGlitch() {
+            changingText.classList.toggle("glitch");
+        }
+    
+        const fontInterval = setInterval(changeFont, 100);
+        const glitchInterval = setInterval(toggleGlitch, 3000);
+    
+        setTimeout(() => {
+            clearInterval(glitchInterval);
+            setTimeout(() => {
+            glitchInterval = setInterval(toggleGlitch, 3000);
+            }, 5000);
+        }, 15000);
+    
+// Clock-related code (JS)
+function showTime() {
+    const date = new Date();
+    // Add one hour to the current time
+    date.setHours(date.getHours() + 1);
+
+    const h = date.getHours() % 12 || 12; // Convert to 12-hour format
+    const m = date.getMinutes().toString().padStart(2, "0");
+    const s = date.getSeconds().toString().padStart(2, "0");
+    const session = date.getHours() >= 12 ? "PM" : "AM";
+
+    const time = `${h}:${m}:${s} ${session}`;
+    document.getElementById("MyClockDisplay").textContent = time;
+
+    setTimeout(showTime, 1000);
+}
+
+showTime();
+
+
+// Toggle the Projects list visibility
+const projectsToggle = document.getElementById("projects-toggle");
+        const projectsList = document.getElementById("projects-list");
+
+        projectsToggle.addEventListener("click", function () {
+            // Toggle the 'open' class on the projects list
+            projectsList.classList.toggle("open");
+        });
+        </script>
+            <p2>&copy; 2025 Tabot Tambeagbor, Inc</p2>
+    </body>
+</html>
+
+
+

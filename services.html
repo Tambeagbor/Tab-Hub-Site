@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="tabhub-favicon.ico">
+    <style>
+        /* CSS Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;600&display=swap');
+
+        /* Logo styling */
+        .logo {
+            position: absolute;
+            top: 60px;
+            left: 50px;
+            display: block;
+            z-index: 11;
+            transition: all 250ms linear;
+            text-decoration: none;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Clock styling */
+        .clock {
+            position: absolute;
+            top: 10%;
+            left: 8.5%;
+            transform: translateX(-50%) translateY(-50%);
+            color: white;
+            font-size: 10px;
+            font-family: Quantico, sans-serif;
+            letter-spacing: 7px;
+            text-align: center;
+            margin-top: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-behavior: smooth;
+    background: none;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+h1 a {
+    position: absolute;
+    top: 12%;
+    right: 4.5%;
+    font-size: 30px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.popover {
+    display: none;
+    box-shadow: 0px 6px 8px rgba(19, 19, 19, .7);
+}
+
+.popover:target {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popover .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 0;
+    height: 0;
+    color: #fff;
+    background-color: #191919;
+    animation: 1s grow ease forwards;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.nav_list  {
+    list-style-type: none;
+}
+
+.nav_list a {
+    text-decoration: none;
+    font-size: 50px;
+    color: #fff;
+}
+
+.nav_list_item {
+    height: 100%;
+    overflow: hidden;
+}
+
+.nav_list li {
+    padding: 15px 0;
+    text-transform: uppercase;
+    transform: translateY(200px);
+    opacity: 0;
+    animation: 2s slideUp ease forwards .5s;
+    position: relative;
+}
+
+.nav_list li::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 0px;
+    left: 0;
+    bottom: 10px;
+    background: #fff; 
+    transition: all .5s ease;
+}
+
+.nav_list li:hover:before {
+        width: 100%;
+}
+
+.popover p {
+    padding: 50px;
+    opacity: 0;
+    animation: 1s fadeIn ease forwards 1s;
+}
+
+.popover .close::after {
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    display: flex;
+    z-index: 1;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: #000;
+    content: "×";
+    cursor: pointer;
+    opacity: 0; 
+    animation: 1s fadeIn ease forwards .5s;
+}
+
+@keyframes grow {
+    100% {
+    height: 90%;
+    width: 90%;
+    }
+}
+
+@keyframes fadeIn {
+100% {
+    opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    100% {
+    transform: translateY(0);
+    opacity: 1;
+    }
+}
+
+p {
+    color: white;
+    font-size: 10px;
+    font-family: Quantico;
+}
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative; /* Ensures content stays above video */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: rgba(0, 0, 0, 0.6); /* Transparent background for card */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-card-content {
+            padding: 15px;
+        }
+
+        .project-card h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .project-card p {
+            margin-top: 10px;
+            color: #ccc;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .project-card ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .project-card li {
+            margin-bottom: 5px;
+        }
+
+        .project-card a {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: #fff;
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .project-card a:hover {
+            background-color: #fff;
+        }
+
+        .tech-stack {
+            background-color: #333;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 5% auto;
+            padding: 20px;
+            background-color: white;
+            width: 80%;
+            max-width: 1000px;
+            height: 70%;
+        }
+
+        .modal iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 40px;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Body and wrapper styling */
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        /* Service box styling */
+        .single-box {
+            width: 250px;
+            height: 270px;
+            background: #111;
+            border-radius: 25px;
+            padding: 30px;
+            text-align: justify;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .single-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .single-box h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            border-bottom: 3px solid #fff;
+            padding-bottom: 10px;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .single-box p {
+            font-size: 0.9rem;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Gradient hover effect */
+        .single-box:before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: calc(100% + 10px);
+            height: calc(100% + 10px);
+            background: linear-gradient(45deg, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #ff00c8, #ff0000);
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            animation: animate 6s linear infinite;
+        }
+
+        .single-box:hover:before {
+            opacity: 1;
+        }
+
+        /* Dark background overlay */
+        .single-box:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            left: 0;
+            top: 0;
+            z-index: -1;
+        }
+
+        /* Gradient animation */
+        @keyframes animate {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* 3D effect for Verdana font */
+        .verdana-3d {
+            transform-style: preserve-3d;
+            perspective: 200px;
+        }
+
+        .verdana-3d h1 {
+            font-family: Verdana, sans-serif;
+            transform: translateZ(10px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Glitch animation */
+        @keyframes glitch {
+            0%, 100% {
+                transform: translate(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: translate(-5px, -5px);
+            }
+            20%, 40%, 60%, 80% {
+                transform: translate(5px, 5px);
+            }
+        }
+
+        .glitch {
+            animation: glitch 0.1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <a href="home.html" class="logo" target="_blank">
+        <div class="content">
+            <h1 id="changingText" class="verdana-3d">TabHub</h1>
+        </div>
+    </a>
+
+    <!-- Services wrapper -->
+    <div class="wrapper">
+        <div class="single-box">
+            <h2 class="service-title" data-translations='["Business Strategy", "Stratégie d\'affaires", "Estrategia de negocios", "Geschäftsstrategie"]'>Business Strategy</h2>
+            <p class="service-text" data-translations='["We plan your success.", "Nous planifions votre succès.", "Planeamos tu éxito.", "Wir planen Ihren Erfolg."]'>I focus on niche expertise, scalable solutions, and continuous growth. By specializing in high-demand areas, optimizing UX and security, and leveraging freelancing, SaaS, or content creation, I maximize opportunities. Networking and staying ahead of trends ensuring long-term success.</p>
+        </div>
+        <div class="single-box">
+            <h2 class="service-title" data-translations='["Digital Marketing", "Marketing Numérique", "Marketing Digital", "Digitale Vermarktung"]'>Digital Marketing</h2>
+            <p class="service-text" data-translations='["Grow your brand online.", "Développez votre marque en ligne.", "Haz crecer tu marca en línea.", "Wachsen Sie Ihre Marke online."]'>I combine coding skills with marketing strategies to enhance efficiency. By reviewing SEO, content marketing, and social media, I build a portfolio and collaborate with marketing teams. Targeting hybrid roles like Marketing Technologist, I deliver result-driven solutions.</p>
+        </div>
+        <div class="single-box">
+            <h2 class="service-title" data-translations='["Graphics Design", "Conception Graphique", "Diseño Gráfico", "Grafikdesign"]'>Graphics Design</h2>
+            <p class="service-text" data-translations='["Visual excellence matters.", "L'excellence visuelle compte.", "La excelencia visual importa.", "Visuelle Exzellenz zählt."]'>As a software engineer, I apply graphic design principles to create user-friendly interfaces and improve UX. Using tools like Adobe XD and Capcut, I design wireframes and prototypes, ensuring visually appealing and functional applications. This blend of technical and creative skills helps me deliver high-quality software solutions.</p>
+        </div>
+        <div class="single-box">
+            <h2 class="service-title" data-translations='["Web Development", "Développement Web", "Desarrollo Web", "Webentwicklung"]'>Web Development</h2>
+            <p class="service-text" data-translations='["Code your future.", "Codez votre avenir.", "Programa tu futuro.", "Codiere deine Zukunft."]'>As a software engineer, I use web development to build and optimize applications, ensuring they are functional, responsive, and user-friendly. I write clean, efficient code using HTML, CSS, JavaScript, and frameworks like React or Angular to create seamless user experiences.</p>
+        </div>
+    </div>
+
+    <h1>
+        <a href="#menu">Menu</a>
+    </h1>
+    <div class="popover" id="menu">
+        <div class="content">
+            <a href="#" class="close"></a>
+            <div class="nav">
+                <ul class="nav_list">
+                    <div class="nav_list_item">
+                        <li><a href="about.html">About</a></li>
+                    </div>
+                    <div class="nav_list_item">
+                        <li><a href="contact.html">Contact</a></li>
+                    </div>
+                    <div class="nav_list_item">
+                        <li><a href="projects.html">Projects</a></li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Clock -->
+    <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+
+    <script>
+        // Font-changing effect
+        const fonts = [
+            "Arial, sans-serif",
+            "Times New Roman, serif",
+            "Verdana, sans-serif",
+            "Courier New, monospace",
+            "Georgia, serif",
+            "Impact, sans-serif",
+            "Tahoma, sans-serif",
+            "Lucida Console, monospace",
+            "Palatino Linotype, serif",
+            "Trebuchet MS, sans-serif",
+            "Bookman, serif",
+            "Franklin Gothic Medium, sans-serif",
+            "Century Gothic, sans-serif",
+            "Copperplate, fantasy",
+            "Brush Script MT, cursive",
+            "Garamond, serif",
+            "Comic Sans MS, cursive",
+            "Arial Black, sans-serif",
+            "Courier, monospace",
+            "Helvetica, sans-serif",
+            "Impact, fantasy",
+            "Book Antiqua, serif",
+            "Monaco, monospace"
+        ];
+
+        const changingText = document.getElementById("changingText");
+        let currentIndex = 0;
+
+        function changeFont() {
+            changingText.style.fontFamily = fonts[currentIndex];
+            currentIndex = (currentIndex + 1) % fonts.length;
+        }
+
+        function toggleGlitch() {
+            changingText.classList.toggle("glitch");
+        }
+
+        const fontInterval = setInterval(changeFont, 100);
+        const glitchInterval = setInterval(toggleGlitch, 3000);
+
+        setTimeout(() => {
+            clearInterval(glitchInterval);
+            setTimeout(() => {
+                setInterval(toggleGlitch, 3000);
+            }, 5000);
+        }, 15000);
+
+        // Clock functionality
+        function showTime() {
+            const date = new Date();
+            date.setHours(date.getHours() + 1); // Add one hour
+
+            const h = date.getHours() % 12 || 12; // 12-hour format
+            const m = date.getMinutes().toString().padStart(2, "0");
+            const s = date.getSeconds().toString().padStart(2, "0");
+            const session = date.getHours() >= 12 ? "PM" : "AM";
+
+            const time = `${h}:${m}:${s} ${session}`;
+            document.getElementById("MyClockDisplay").textContent = time;
+
+            setTimeout(showTime, 1000);
+        }
+
+        showTime();
+
+        // Text-switching functionality
+        function switchText(element) {
+            const translations = JSON.parse(element.getAttribute('data-translations'));
+            let index = 0;
+
+            // Initial text setup
+            element.textContent = translations[index];
+
+            // Set interval to switch text
+            setInterval(() => {
+                // Fade out
+                element.style.opacity = 0;
+
+                // Wait for the fade-out transition to complete
+                setTimeout(() => {
+                    // Update text
+                    index = (index + 1) % translations.length;
+                    element.textContent = translations[index];
+
+                    // Fade in
+                    element.style.opacity = 1;
+                }, 500); // Matches the CSS transition duration
+            }, 4000); // Changes every 4 seconds
+        }
+
+        // Apply text switching to all service titles and descriptions
+        document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll('.service-title, .service-text');
+            elements.forEach(switchText);
+        });
+    </script>
+</body>
+</html>

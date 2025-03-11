@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TabHub</title>
+<link rel="icon" type="image/png" sizes="192x192" href="tabhub-favicon.png">
+<style>
+    body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    }
+
+    video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    }
+
+    .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .verdana-3d {
+    transform-style: preserve-3d;
+    perspective: 200px;
+    }
+
+    .verdana-3d h1 {
+    font-family: Verdana, sans-serif;
+    transform: translateZ(10px);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.8);
+    }
+
+    .glitch {
+    animation: glitch 0.1s infinite;
+    }
+
+    @keyframes glitch {
+    0%, 100% {
+        transform: translate(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translate(-5px, -5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translate(5px, 5px);
+    }
+    }
+
+    a {
+    text-decoration: none;
+    }
+
+    .clock {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: white;
+    font-size: 19px;
+    font-family: Quantico;
+    letter-spacing: 7px;
+    text-align: center;
+    margin-top: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+</style>
+</head>
+
+<body>
+<video autoplay loop muted>
+    <source src="TabHub-Background.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<a href="menu.html" class="page-link">
+    <div class="content">
+    <h1 id="changingText" class="verdana-3d">TabHub</h1>
+    </div>
+</a>
+
+<div id="MyClockDisplay" class="clock"></div>
+
+<script>
+    const fonts = [
+    "Arial, sans-serif", "Times New Roman, serif", "Verdana, sans-serif",
+    "Courier New, monospace", "Georgia, serif", "Impact, sans-serif",
+    "Tahoma, sans-serif", "Lucida Console, monospace", "Palatino Linotype, serif"
+    ];
+
+    const changingText = document.getElementById("changingText");
+    let currentIndex = 0;
+
+    function changeFont() {
+    changingText.style.fontFamily = fonts[currentIndex];
+    currentIndex = (currentIndex + 1) % fonts.length;
+    }
+
+    function toggleGlitch() {
+    changingText.classList.toggle("glitch");
+    }
+
+    setInterval(changeFont, 100);
+    setInterval(toggleGlitch, 3000);
+
+    function showTime() {
+    const date = new Date();
+    // Add one hour to the current time
+    date.setHours(date.getHours() + 1);
+
+    const h = date.getHours() % 12 || 12; // Convert to 12-hour format
+    const m = date.getMinutes().toString().padStart(2, "0");
+    const s = date.getSeconds().toString().padStart(2, "0");
+    const session = date.getHours() >= 12 ? "PM" : "AM";
+
+    const time = `${h}:${m}:${s} ${session}`;
+    document.getElementById("MyClockDisplay").textContent = time;
+
+    setTimeout(showTime, 1000);
+}
+
+showTime();
+
+// Toggle the Projects list visibility
+const projectsToggle = document.getElementById("projects-toggle");
+        const projectsList = document.getElementById("projects-list");
+
+        projectsToggle.addEventListener("click", function () {
+            // Toggle the 'open' class on the projects list
+            projectsList.classList.toggle("open");
+        });
+        </script>
+            <p2>&copy; 2025 Tabot Tambeagbor, Inc</p2>
+    </body>
+</html>
+
+
+
+

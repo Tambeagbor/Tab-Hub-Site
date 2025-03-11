@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="tabhub-favicon.ico">
+    <style>
+        /* Full-screen background video */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Make sure the video stays behind the content */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Slightly darkened background */
+            color: white;
+        }
+
+        .logo {
+            position: absolute;
+            top: 60px;
+            left: 50px;
+            display: block;
+            z-index: 11;
+            transition: all 250ms linear;
+            text-decoration: none;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Add your existing styles for .menu-icon, .nav, .section-center, and h1 */
+
+        /* Add media query styles for responsiveness */
+        @media screen and (max-width: 991px) {
+        .menu-icon:checked + label,
+        .menu-icon:not(:checked) + label {
+            right: 55px;
+    }
+
+        .logo {
+            left: 30px;
+        }
+
+        .clock {
+            left: 30px;
+        }
+
+
+            /* Apply 3D effect to Verdana font */
+        .verdana-3d {
+            transform-style: preserve-3d;
+            perspective: 200px;
+        }
+
+            .verdana-3d h1 {
+            font-family: Verdana, sans-serif;
+            transform: translateZ(10px);
+/* Add a glow effect */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.8);
+        }
+
+/* Glitch animation */
+            @keyframes glitch {
+
+
+            0%,
+            100% {
+                transform: translate(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translate(-5px, -5px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+        transform: translate(5px, 5px);
+            }
+    }
+
+            .glitch {
+                animation: glitch 0.1s infinite;
+    }
+
+            /* Add your existing media query styles */
+        }
+
+.clock {
+    position: absolute;
+    top: 10%;
+    left: 8.5%;
+    transform: translateX(-50%) translateY(-50%);
+    color: white;
+    font-size: 10px;
+    font-family: Quantico;
+    letter-spacing: 7px;
+    text-align: center; /* Center the clock text */
+    margin-top: 10px; /* Add some spacing between text and clock */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-behavior: smooth;
+    background: none;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+h1 a {
+    position: absolute;
+    top: 12%;
+    right: 4.5%;
+    font-size: 30px;
+    color: #BF2E97;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.popover {
+    display: none;
+    box-shadow: 0px 6px 8px rgba(19, 19, 19, .7);
+}
+
+.popover:target {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popover .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 0;
+    height: 0;
+    color: #fff;
+    background-color: #191919;
+    animation: 1s grow ease forwards;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.nav_list  {
+    list-style-type: none;
+}
+
+.nav_list a {
+    text-decoration: none;
+    font-size: 50px;
+    color: #fff;
+}
+
+.nav_list_item {
+    height: 100%;
+    overflow: hidden;
+}
+
+.nav_list li {
+    padding: 15px 0;
+    text-transform: uppercase;
+    transform: translateY(200px);
+    opacity: 0;
+    animation: 2s slideUp ease forwards .5s;
+    position: relative;
+}
+
+.nav_list li::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 0px;
+    left: 0;
+    bottom: 10px;
+    background: #BF2E97; 
+    transition: all .5s ease;
+}
+
+.nav_list li:hover:before {
+        width: 100%;
+}
+
+.popover p {
+    padding: 50px;
+    opacity: 0;
+    animation: 1s fadeIn ease forwards 1s;
+}
+
+.popover .close::after {
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    display: flex;
+    z-index: 1;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: #BF2E97;
+    color: #fff;
+    content: "×";
+    cursor: pointer;
+    opacity: 0; 
+    animation: 1s fadeIn ease forwards .5s;
+}
+
+@keyframes grow {
+    100% {
+    height: 90%;
+    width: 90%;
+    }
+}
+
+@keyframes fadeIn {
+100% {
+    opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    100% {
+    transform: translateY(0);
+    opacity: 1;
+    }
+}
+
+p {
+    color: white;
+    font-size: 10px;
+    font-family: Quantico;
+}
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative; /* Ensures content stays above video */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: rgba(0, 0, 0, 0.6); /* Transparent background for card */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid #ddd;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-card-content {
+            padding: 15px;
+        }
+
+        .project-card h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .project-card p {
+            margin-top: 10px;
+            color: #ccc;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .project-card ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .project-card li {
+            margin-bottom: 5px;
+        }
+
+        .project-card a {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: #BF2E97;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .project-card a:hover {
+            background-color: #9e1b6d;
+        }
+
+        .tech-stack {
+            background-color: #333;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 5% auto;
+            padding: 20px;
+            background-color: white;
+            width: 80%;
+            max-width: 1000px;
+            height: 70%;
+        }
+
+        .modal iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 40px;
+            font-weight: bold;
+            color: #BF2E97;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Video -->
+    <video class="video-background" autoplay loop muted>
+        <source src="gears.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <a href="home.html" class="logo" target="_blank">
+        <div class="content">
+            <h1 id="changingText" class="verdana-3d">TabHub</h1>
+    </a>
+
+    
+
+    <div class="container">
+        <h1>My Apps / Projects</h1>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <img src="Code-Wheel.png" alt="Text Encryptor">
+                <div class="project-card-content">
+                    <h3>Text Encryptor</h3>
+                    <p>A web-based encryption tool to secure your text messages using advanced algorithms. Protect sensitive data and messages from unauthorized access.</p>
+                    <ul>
+                        <li><strong>Features:</strong> Encrypt/Decrypt Text, Password Protection</li>
+                        <li><strong>Tech Stack:</strong> HTML, JavaScript, CSS, Node.js</li>
+                        <li><strong>Category:</strong> Security</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <strong>Tech Stack:</strong> HTML, JavaScript, CSS, Node.js, AES Encryption
+                    </div>
+                    <a href="text-encryptor.html" onclick="openModal('text-encryptor')">View Application</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <img src="tracked-storefront.png" alt="Market Tracker">
+                <div class="project-card-content">
+                    <h3>Market Tracker</h3>
+                    <p>An app that tracks stock market trends and real-time prices. Stay updated with the latest stock quotes and make informed investment decisions.</p>
+                    <ul>
+                        <li><strong>Features:</strong> Live Stock Data, Market Trends, Portfolio Management</li>
+                        <li><strong>Tech Stack:</strong> React, Firebase, Chart.js</li>
+                        <li><strong>Category:</strong> Finance</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <strong>Tech Stack:</strong> React, Firebase, Chart.js
+                    </div>
+                    <a href="index.html" onclick="openModal('market-tracker')">View Application</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <img src="Trk1 Trk2 Logo Empty.png" alt="MPIII Player">
+                <div class="project-card-content">
+                    <h3>Track 1, Track 2 - MPIII Player</h3>
+                    <p>Keep track of my music with this app. Browse, listen, and enjoy my music collection in high quality.</p>
+                    <ul>
+                        <li><strong>Features:</strong> Allows users to play, pause, and switch between songs. All in-house music.</li>
+                        <li><strong>Tech Stack:</strong> HTML, CSS, JavaScript, Node.js with Express.js, Protools, FL Studio and MongoDB for storage.</li>
+                        <li><strong>Category:</strong> Entertainment</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <strong>Tech Stack:</strong> HTML, CSS, JavaScript, Node.js & Express, Firebase, MongoDB, FontAwesome, Ubuntu
+                    </div>
+                    <a href="MPIII.html" onclick="openModal('mp3-player')">View Application</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <img src="tabhub-favicon.png" alt="MPIII Player">
+                <div class="project-card-content">
+                    <h3>TabHub</h3>
+                    <p>My personal portfolio-website showcasing my work as a developer. Feel free to learn more about me, browse through my projects and share my passion for UX.</p>
+                    <ul>
+                        <li><strong>Features:</strong> My projects,  </li>
+                        <li><strong>Tech Stack:</strong> HTML, CSS, JavaScript, Node.js with Express.js, Protools, .MP3, .MP4 and MongoDB for storage.</li>
+                        <li><strong>Category:</strong> Web-Portfolio</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <strong>Tech Stack:</strong> HTML, CSS, JavaScript, Node.js & Express, Firebase, MongoDB, FontAwesome, Ubuntu
+                    </div>
+                    <a href="home.html" onclick="openModal('tab-hub')">View Application</a>
+                </div>
+            </div>
+
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <img src="translate.png" alt="MPIII Player">
+                <div class="project-card-content">
+                    <h3>Construe...</h3>
+                    <p>Construe is a language learning app that provides word translations with pronunciation and a multiple-choice quiz to test vocabulary knowledge, using HTML, CSS, and JavaScript.</p>
+                    <ul>
+                        <li><strong>Features:</strong> Word Translation Tool, Multiple Choice Quiz Game, UI & UX Enhancements.</li>
+                        <li><strong>Tech Stack:</strong> HTML, CSS, Javascript(Vanilla JS) and MongoDB for storage.</li>
+                        <li><strong>Category:</strong> Translation</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <strong>Tech Stack:</strong> HTML, CSS, JavaScript, Google Translate API, Web Speech API & MongoDB for storage.
+                    </div>
+                    <a href="Construe.html" onclick="openModal('anime-player')">View Application</a>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <img src="exchange-rate.webp" alt="MPIII Player">
+                <div class="project-card-content">
+                    <h3>Currency Exchange</h3>
+                    <p>A sleek and interactive currency exchange app that fetches real-time exchange rates, allows currency selection with country flags, and provides instant conversion with a swap feature. </p>
+                    <ul>
+                        <li><strong>Features:</strong> Real-time Currency Conversion, Currency Selection, Auto-Update on Load, Swap Currencies, User-Friendly UI & Error Handling </li>
+                        <li><strong>Tech Stack:</strong> HTML, CSS, JavaScript (Vanilla JS), ExchangeRate-API, Font Awesome, Google Fonts (Poppins) & FlagCDN</li>
+                        <li><strong>Category:</strong> Finance</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <strong>Tech Stack:</strong> HTML, CSS, JavaScript (Vanilla JS), ExchangeRate-API, Font Awesome, Google Fonts (Poppins) & FlagCDN
+                    </div>
+                    <a href="currency-exchange.html" onclick="openModal('currency-exchange')">View Application</a>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card">
+                <img src="flick-icon.jpg" alt="Tab-Flick API">
+                <div class="project-card-content">
+                    <h3>Tab-Flick API</h3>
+                    <p>The Tab-Flick API is a movie search app that allows users to discover films with dynamic, infinite scrolling, displaying key details such as posters, titles, and release dates.</p>
+                    <ul>
+                        <li><strong>Features:</strong> Search & Discovery, UI & UX, Functionality</li>
+                        <li><strong>Tech Stack:</strong> HTML5, CSS3, JavaScript (ES6+), API & Data Handling & Deployment & Hosting.</li>
+                        <li><strong>Category:</strong> Entertainment</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <strong>Tech Stack:</strong> HTML5, CSS3, JavaScript (ES6+), API & Data Handling & Deployment & Hosting 
+                    </div>
+                    <a href="flick.html" onclick="openModal('tab-flick API')">View Application</a>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="project-card">
+                <img src="ava-logo.png" alt="Ava Living Arrangements">
+                <div class="project-card-content">
+                    <h3>Ava Living Arrangements</h3>
+                    <p>AVA Living Arrangements is a sleek, responsive website designed for a real estate agent to showcase properties, provide company information, and facilitate client communication with an immersive video background and minimalist design.</p>
+                    <ul>
+                        <li><strong>Features:</strong> Navigation Menu, Responsive Design, Background Video, Customizable Content Sections, Clean Layout and Minimalist Design</li>
+                        <li><strong>Tech Stack:</strong> HTML, CSS, JavaScript, Video File</li>
+                        <li><strong>Category:</strong> Real Estate</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <strong>Tech Stack:</strong> HTML, CSS, JavaScript, Video File
+                    </div>
+                    <a href="ava-living.html" onclick="openModal('Ava Living Arrangements')">View Application</a>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="project-card">
+                <img src="weather-icon.jpg" alt="weather-forecast">
+                <div class="project-card-content">
+                    <h3>Weather Forecast</h3>
+                    <p>The weather forecast app provides real-time weather updates and a 4-day forecast, featuring an interactive interface with weather icons and detailed information like temperature, humidity, and wind speed.</p>
+                    <ul>
+                        <li><strong>Features:</strong> UI Layout, Interactivity, Icons and Weather Representation</li>
+                        <li><strong>Tech Stack:</strong> HTML, CSS, JavaScript (Vanilla JS), API, Boxicons</li>
+                        <li><strong>Category:</strong> Forecast</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <strong>Tech Stack:</strong> HTML, CSS, JavaScript (Vanilla JS), API, Boxicons
+                    </div>
+                    <a href="weather-forecast.html" onclick="openModal('weather-forecast')">View Application</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1>
+        <a href="#menu">Menu</a>
+    </h1>
+    <div class="popover" id="menu">
+        <div class="content">
+            <a href="#" class="close"></a>
+            <div class="nav">
+                <ul class="nav_list">
+                    <div class="nav_list_item">
+                        <li><a href="about.html">About</a></li>
+                    </div>
+                    <div class="nav_list_item">
+                        <li><a href="contact.html">Contact</a></li>
+                    </div>
+                    <div class="nav_list_item">
+                        <li><a href="services.html">Services</a></li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Modal for Application -->
+    <div id="text-encryptor" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('text-encryptor')">&times;</span>
+            <iframe src="text-encryptor.html" title="Text Encryptor"></iframe>
+        </div>
+    </div>
+
+    <div id="market-tracker" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('market-tracker')">&times;</span>
+            <iframe src="finance-tracker.html" title="Market Tracker"></iframe>
+        </div>
+    </div>
+
+    <div id="market-tracker" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('market-tracker')">&times;</span>
+            <iframe src="finance-tracker.html" title="Market Tracker"></iframe>
+        </div>
+    </div>
+
+    <div id="MPIII-player" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('mpIII-player')">&times;</span>
+            <iframe src="MPIII.html" title="MPIII Player"></iframe>
+        </div>
+    </div>
+
+    <div id="weather-tracker" class="modal">
+
+            <span class="close" onclick="closeModal('weather-forecast')">&times;</span>
+            <iframe src="weather-tracker.html" title="Weather Tracker"></iframe>
+        </div>
+    </div>
+
+    <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+
+    <script>
+        // Open Modal
+        function openModal(projectId) {
+            document.getElementById(projectId).style.display = "block";
+        }
+
+        // Close Modal
+        function closeModal(projectId) {
+            document.getElementById(projectId).style.display = "none";
+        }
+
+        const fonts = [
+            "Arial, sans-serif",
+            "Times New Roman, serif",
+            "Verdana, sans-serif",
+            "Courier New, monospace",
+            "Georgia, serif",
+            "Impact, sans-serif",
+            "Tahoma, sans-serif",
+            "Lucida Console, monospace",
+            "Palatino Linotype, serif",
+            "Trebuchet MS, sans-serif",
+            "Bookman, serif",
+            "Franklin Gothic Medium, sans-serif",
+            "Century Gothic, sans-serif",
+            "Copperplate, fantasy",
+            "Brush Script MT, cursive",
+            "Garamond, serif",
+            "Comic Sans MS, cursive",
+            "Arial Black, sans-serif",
+            "Verdana, sans-serif",
+            "Courier, monospace",
+            "Helvetica, sans-serif",
+            "Impact, fantasy",
+            "Book Antiqua, serif",
+            "Monaco, monospace"
+          // Add more fonts as needed
+        ];
+
+        const changingText = document.getElementById("changingText");
+        let currentIndex = 0;
+    
+        function changeFont() {
+            changingText.style.fontFamily = fonts[currentIndex];
+            currentIndex = (currentIndex + 1) % fonts.length;
+        }
+    
+        function toggleGlitch() {
+            changingText.classList.toggle("glitch");
+        }
+    
+        const fontInterval = setInterval(changeFont, 100);
+        const glitchInterval = setInterval(toggleGlitch, 3000);
+    
+        setTimeout(() => {
+            clearInterval(glitchInterval);
+            setTimeout(() => {
+            glitchInterval = setInterval(toggleGlitch, 3000);
+            }, 5000);
+        }, 15000);
+
+    // Clock-related code (JS)
+    function showTime() {
+    const date = new Date();
+    // Add one hour to the current time
+    date.setHours(date.getHours() + 1);
+
+    const h = date.getHours() % 12 || 12; // Convert to 12-hour format
+    const m = date.getMinutes().toString().padStart(2, "0");
+    const s = date.getSeconds().toString().padStart(2, "0");
+    const session = date.getHours() >= 12 ? "PM" : "AM";
+
+    const time = `${h}:${m}:${s} ${session}`;
+    document.getElementById("MyClockDisplay").textContent = time;
+
+    setTimeout(showTime, 1000);
+}
+
+showTime();
+
+
+        // Toggle the Projects list visibility
+const projectsToggle = document.getElementById("projects-toggle");
+        const projectsList = document.getElementById("projects-list");
+
+        projectsToggle.addEventListener("click", function () {
+            // Toggle the 'open' class on the projects list
+            projectsList.classList.toggle("open");
+        });
+    </script>
+<footer><p2>&copy; 2025 Tabot Tambeagbor, Inc</p2>
+</footer></body>
+
+</html>
+
