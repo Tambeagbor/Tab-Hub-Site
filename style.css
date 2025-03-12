@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    /* Update your CSS custom properties as needed */
+    --top-menu-bg: #0e9aa7;
+    --sub-menu-bg: #3da4ab;
+}
+
+body {
+    font-family: Tahoma, Geneva, sans-serif;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 3rem auto;
+    color: white;
+    overflow: hidden; /* Hide any overflow from the video */
+    position: relative; /* Needed for absolute positioning of video */
+}
+
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.flex-ctr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+nav a {
+    line-height: 3rem;
+    padding: 0 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+}
+
+#top-menu a:hover {
+    background-color: var(--sub-menu-bg);
+}
+
+a {
+text-decoration: none;
+}
+
+/* ... (rest of the CSS remains the same) ... */

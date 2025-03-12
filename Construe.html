@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construe</title>
+    <link rel="stylesheet" href="Construe.css">
+</head>
+<body>
+    <div class="main-menu">
+        <div class="game-header">
+            <h1>To Be Construe...</h1>
+            <img src="translate-3.png"> 
+        </div>
+        <div class="translations">
+            <div class="language-options">
+                <select id="leftLanguage">
+                    <option value="english">English</option>
+                    <option value="french">French</option>
+                    <!-- Add more language options here -->
+                </select>
+                <select id="rightLanguage">
+                    <option value="english">English</option>
+                    <option value="french">French</option>
+                    <!-- Add more language options here -->
+                </select>
+            </div>
+            <div class="translation-tool">
+                <textarea id="inputText" placeholder="Enter text to translate"></textarea>
+                <button id="translateBtn">Translate</button>
+                <button id="clearBtn">Clear</button>
+                <div id="translationResult"></div>
+            </div>
+        </div>
+        <div class="game-options">
+            <button id="multipleChoiceBtn">Multiple Choice Game</button>
+            <div id="multipleChoiceGame" class="game-section">
+            <div id="questionContainer">
+        <h2 id="question"></h2>
+        <ul id="choices"></ul>
+        <button id="nextBtn" style="display: none;">Next Question</button>
+        <div id="feedback"></div>
+    </div>
+</div>
+            </div>
+
+    <script src="Construe.js"></script>
+</body>
+</html>
+
