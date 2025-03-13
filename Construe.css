@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.main-menu {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #b3cde0;
+}
+
+.game-header {
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add the shadow here */
+    padding: 20px; /* Add some padding to create space between the shadow and the header content */
+}
+
+.game-header h1 {
+    font-family: monospace;
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add the shadow here */
+}
+
+.translations {
+    margin-bottom: 20px;
+}
+
+.language-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.translation-tool textarea {
+    width: 100%;
+    height: 80px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.game-options button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: monospace;
+    background-color: #a4a2a8;
+    color: white;
+    cursor: pointer;
+}
+
+.game-section {
+    display: none;
+    padding: 10px;
+    background-color: #a4a2a8;
+    color: white;
+}
+
+#translationResult {
+    font-weight: bold;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #a4a2a8;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #b3cde0;
+    min-width: 200px;
+    padding: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+  /* Add more CSS styling as needed */
+
+
+
+
+
+
+
+
+
+
+
+
