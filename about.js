@@ -55,6 +55,9 @@ muteButton.addEventListener('click', () => {
     }
 });
 
+speechSynthesis.getVoices().forEach(voice => {
+    console.log(voice.name, voice.lang, voice.gender);
+});
 // Ensure voices are loaded before speaking
 window.speechSynthesis.onvoiceschanged = () => {
     speakJapanese(japaneseText);
