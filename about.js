@@ -4,7 +4,7 @@ const muteButton = document.getElementById('mute-button');
 let isMuted = false;
 
 // Japanese translation of the subtitle text
-const japaneseText = "こんにちは！私は高木さんです。タボットのソフトウェアエンジニアとしての旅についてお話しします。";
+const japaneseText = "こんにちは！私はカカシです。タボットのソフトウェアエンジニアとしての旅についてお話しします。";
 
 // Function to speak the text
 function speakJapanese(text) {
@@ -13,23 +13,25 @@ function speakJapanese(text) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'ja-JP'; // Set language to Japanese
     utterance.rate = 1.1; // Slightly faster speech
-    utterance.pitch = 1.2; // Higher pitch for a schoolgirl-like voice
+    utterance.pitch = 0.9; // Lower pitch for a male voice
 
-    // Find a Japanese female voice
+    // Find a Japanese male voice
     const voices = speechSynthesis.getVoices();
-    const japaneseFemaleVoice = voices.find(voice => 
-        voice.lang === 'ja-JP' && voice.name.toLowerCase().includes('female')
+    const japaneseMaleVoice = voices.find(voice => 
+        voice.lang === 'ja-JP' && voice.name.toLowerCase().includes('male')
     );
 
-    if (japaneseFemaleVoice) {
-        utterance.voice = japaneseFemaleVoice; // Set the voice
+    if (japaneseMaleVoice) {
+        utterance.voice = japaneseMaleVoice; // Set the voice
+    } else {
+        console.warn('Japanese male voice not found. Using default voice.');
     }
 
-    // Show subtitles as she speaks
+    // Show subtitles as he speaks
     subtitles.innerHTML = ''; // Clear previous subtitles
     subtitles.classList.add('visible');
 
-    const englishText = "Hi! I'm Tagaki San, and I'm here to tell you about Tabot's journey as a software engineer.";
+    const englishText = "Hi! I'm Kakashi, and I'm here to tell you about Tabot's journey as a software engineer.";
     let index = 0;
 
     const interval = setInterval(() => {
@@ -47,7 +49,7 @@ function speakJapanese(text) {
 // Mute button functionality
 muteButton.addEventListener('click', () => {
     isMuted = !isMuted;
-    muteButton.textContent = isMuted ? "Unmute Tagaki" : "Mute Tagaki";
+    muteButton.textContent = isMuted ? "Unmute Kakashi" : "Mute Kakashi";
     if (isMuted) {
         speechSynthesis.cancel(); // Stop speaking if muted
     }
