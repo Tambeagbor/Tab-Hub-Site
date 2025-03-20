@@ -78,7 +78,13 @@ const songs = [
         displayName: 'Pay Attention (Instrumental)',
         cover: 'assets/pay-attention.jpeg',
         artist: 'Tab The God',
-    }
+    },
+    {
+        path: 'assets/Twilight.mp3',
+        displayName: 'Twilight (Instrumental)',
+        cover: 'assets/twilight2.jpeg',
+        artist: 'Tab The God',
+    },
 ];
 
 let musicIndex = 0;
