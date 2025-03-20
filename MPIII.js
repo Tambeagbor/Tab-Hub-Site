@@ -62,6 +62,12 @@ const songs = [
         artist: 'Tab The God',
     },
     {
+        path: 'assets/maboki love song.mp3',
+        displayName: 'Maboki Love Song (Instrumental)',
+        cover: 'assets/maboki-love-song.jpeg',
+        artist: 'Tab The God',
+    },
+    {
         path: 'assets/No Limit (1).mp3',
         displayName: 'No Limit (Prod. By Tab The God)',
         cover: 'assets/no-limit.jpg',
