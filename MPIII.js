@@ -56,7 +56,7 @@ const songs = [
         artist: 'Tab The God',
     },
     {
-        path: 'assets/pay attenion.mp3',
+        path: 'assets/pay attention.mp3',
         displayName: 'Pay Attention (Instrumental)',
         cover: 'assets/pay-attention.jpeg',
         artist: 'Tab The God',
