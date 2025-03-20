@@ -22,7 +22,7 @@ const songs = [
     {
         path: 'assets/Saxklyfe Skinny feat. Project Pat - Ten Freaky Girls (Prod. By Tab The God).mp3',
         displayName: 'Ten Freaky Girls',
-        cover: 'assets/Ten-Freaky-Girls.jpeg',
+        cover: 'assets/Ten-Freaky-Girls.JPEG',
         artist: 'Saxklyfe Skinny feat. Project Pat (Prod. By Tab The God)',
     },
     {
