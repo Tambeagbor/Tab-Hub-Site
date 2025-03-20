@@ -22,7 +22,7 @@ const songs = [
     {
         path: 'assets/Saxklyfe Skinny feat. Project Pat - Ten Freaky Girls (Prod. By Tab The God).mp3',
         displayName: 'Ten Freaky Girls',
-        cover: 'assets/Ten-Freaky-Girls.JPEG',
+        cover: 'assets/Ten-Freaky-Girls.jpeg',
         artist: 'Saxklyfe Skinny feat. Project Pat (Prod. By Tab The God)',
     },
     {
@@ -53,6 +53,12 @@ const songs = [
         path: 'assets/Fire Drill.mp3',
         displayName: 'Fire Drill (Instrumental)',
         cover: 'assets/Fire-Drill.jpeg',
+        artist: 'Tab The God',
+    },
+    {
+        path: 'assets/pay attenion.mp3',
+        displayName: 'Pay Attention (Instrumental)',
+        cover: 'assets/pay-attention.jpeg',
         artist: 'Tab The God',
     }
 ];
