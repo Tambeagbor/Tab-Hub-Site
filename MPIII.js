@@ -22,7 +22,7 @@ const songs = [
     {
         path: 'assets/Saxklyfe Skinny feat. Project Pat - Ten Freaky Girls (Prod. By Tab The God).mp3',
         displayName: 'Ten Freaky Girls',
-        cover: 'assets/Ten-Freaky-Girls.JPEG',
+        cover: 'assets/Ten-Freaky-Girls.jpeg',
         artist: 'Saxklyfe Skinny feat. Project Pat (Prod. By Tab The God)',
     },
     {
@@ -47,6 +47,12 @@ const songs = [
         path: 'assets/Crown Flow.mp3',
         displayName: 'Crown Flow (Instrumental)',
         cover: 'assets/Crown-Flow3.jpeg',
+        artist: 'Tab The God',
+    },
+    {
+        path: 'assets/Excalibur.mp3',
+        displayName: 'Excalibur (Instrumental)',
+        cover: 'assets/excalibur.jpeg',
         artist: 'Tab The God',
     },
     {
