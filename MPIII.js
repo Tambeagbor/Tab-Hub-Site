@@ -30,6 +30,24 @@ const songs = [
         displayName: 'DAWGS IN ATLANTA (Remix)',
         cover: 'assets/DAWGS IN ATLANTA (REMIX).jpg',
         artist: 'Ag Tayky (feat. KIERE)',
+    },
+    {
+        path: 'assets/Body Count.mp3',
+        displayName: 'Body Count (Instrumental)',
+        cover: 'assets/Body-Count.jpeg',
+        artist: 'Tab Da God',
+    },
+    {
+        path: 'assets/Crown Flow.mp3',
+        displayName: 'Crown Flow (Instrumental)',
+        cover: 'assets/Crown-Flow3.jpeg',
+        artist: 'Tab Da God',
+    },
+    {
+        path: 'assets/Fire Drill.mp3',
+        displayName: 'Fire Drill (Instrumental)',
+        cover: 'assets/Fire-Drill.jpeg',
+        artist: 'Tab Da God',
     }
 ];
 
