@@ -20,6 +20,12 @@ const songs = [
         artist: 'Ag Tayky',
     },
     {
+        path: 'assets/Saxklyfe Skinny feat. Project Pat - Ten Freaky Girls (Prod. By Tab The God).mp3',
+        displayName: 'Ten Freaky Girls',
+        cover: 'assets/Ten-Freaky-Girls.jpeg',
+        artist: 'Saxklyfe Skinny feat. Project Pat (Prod. By Tab The God)',
+    },
+    {
         path: 'assets/DAWGS IN ATLANTA.mp3',
         displayName: 'DAWGS IN ATLANTA',
         cover: 'assets/DAWGS IN ATLANTA.png',
